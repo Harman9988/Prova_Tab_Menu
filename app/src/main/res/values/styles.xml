@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="Colorcheck">
-        <item name="colorAccent">#4a7194</item>
+        <item name="colorAccent">#689F38</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -21,8 +21,8 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">#677cb7</item>
-        <item name="android:textColorPrimary">#677cb7</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
         <item name="android:background">#ffffff</item>
     </style>
 

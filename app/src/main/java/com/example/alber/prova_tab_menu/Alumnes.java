@@ -18,7 +18,7 @@ public class Alumnes {
         return id;
     }
 
-    public void setId(int2id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -56,7 +56,6 @@ public class Tab1_alumne_fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         alumneList = new ArrayList<>();
         spinner=view.findViewById(R.id.spinner_classes);
-        boto_inserir=view.findViewById( R.id.button_inserir);
         arrayList= new ArrayList<String>();
 
 
