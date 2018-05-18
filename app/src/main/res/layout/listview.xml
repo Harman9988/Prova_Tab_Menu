@@ -7,36 +7,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="#ffffff"
-        android:padding="15dp">
+        android:background="#FFFFFF"
+        android:padding="8dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imagealumne"
             android:layout_width="74dp"
-            android:layout_height="87dp"
-            android:layout_weight="1" />
+            android:layout_height="74dp"
+            android:layout_weight="1"
+            app:civ_border_color="#FF000000" />
 
         <TextView
             android:id="@+id/nomalumne"
-            android:layout_width="181dp"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="26dp"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="16dp"
-            android:layout_toEndOf="@id/imagealumne"
-            android:layout_toRightOf="@id/imagealumne"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/cognomalumne"
             android:textColor="#689F38"
-            android:textSize="22dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/cognomalumne"
-            android:layout_width="179dp"
+            android:layout_width="92dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imagealumne"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="116dp"
             android:textColor="#689F38"
-            android:textSize="22dp" />
+            android:textSize="14dp" />
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -45,9 +43,9 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="45dp"
-            android:theme="@style/Colorcheck"
-            android:scaleX="1.70"
-            android:scaleY="1.70" />
+            android:scaleX="1.50"
+            android:scaleY="1.50"
+            android:theme="@style/Colorcheck" />
 
     </RelativeLayout>
 </LinearLayout>

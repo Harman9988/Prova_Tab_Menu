@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_login;
     ProgressDialog progressDialog;
 
+    INTERNET internet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

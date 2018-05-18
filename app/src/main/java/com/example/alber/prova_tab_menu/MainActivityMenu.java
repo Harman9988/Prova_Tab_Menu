@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivityMenu extends AppCompatActivity {
 
@@ -25,14 +26,16 @@ public class MainActivityMenu extends AppCompatActivity {
     private SectionsPageAdapter mSectionsPageAdapter;
 
     private ViewPager mViewPager;
+    INTERNET internet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
         mSectionsPageAdapter= new SectionsPageAdapter(getSupportFragmentManager());
-
         mViewPager= (ViewPager) findViewById(R.id.container);
         setUpViewPager(mViewPager);
 
@@ -42,6 +45,7 @@ public class MainActivityMenu extends AppCompatActivity {
 
 
     private void setUpViewPager(ViewPager viewPager){
+
         SectionsPageAdapter adapter= new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Tab1_alumne_fragment(), "ALUMNES");
         adapter.addFragment(new Tab2_menu_fragment(), "MENU");

@@ -7,34 +7,39 @@
 
     <Spinner
         android:id="@+id/spinner_classes"
-        android:layout_width="match_parent"
+        android:layout_width="390dp"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:layout_marginStart="21dp"
+        android:textColor="#689F38"
+        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/toolbarbtn"
+        android:id="@+id/boto_inserir"
         android:layout_width="384dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/recylcerView"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="right"
-        android:background="@drawable/roundedbutton"
-        android:text="SAVE" />
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/roundedbutton2"
+        android:text="GUARDAR" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:textColor="#689F38"
-        android:text="Selecioneu la classe" />
+        android:layout_marginTop="10dp"
+        android:text="Selecioneu la classe"
+        android:textColor="#689F38" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recylcerView"
         android:layout_width="match_parent"
-        android:layout_height="604dp"
+        android:layout_height="575dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="87dp"

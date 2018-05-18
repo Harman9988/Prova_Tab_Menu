@@ -1,6 +1,6 @@
 package com.example.alber.prova_tab_menu;
 
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,10 +41,11 @@ public class Tab1_alumne_fragment extends Fragment {
     private ArrayList<String> arrayList;
     static private String id_classe, torn_classe;
     Button boto_inserir;
-    List<Alumnes> alumneList;
+    List<Alumne> alumneList;
     RecyclerView recyclerView;
+    Button button;
     AdaptadorListView lAdapter;
-    final FragmentActivity fragmentActivity = getActivity();
+    ProgressDialog progressDialog;
 
 
     @Nullable
@@ -57,6 +59,11 @@ public class Tab1_alumne_fragment extends Fragment {
         alumneList = new ArrayList<>();
         spinner=view.findViewById(R.id.spinner_classes);
         arrayList= new ArrayList<String>();
+        button = view.findViewById( R.id.boto_inserir );
+
+        progressDialog = new ProgressDialog(getContext(),R.style.AppCompatAlertDialogStyle);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -68,7 +75,6 @@ public class Tab1_alumne_fragment extends Fragment {
                 id_classe=getClasseId(position); //Per guardar l'id de la classe seleccionada a l'spinners
                 torn_classe=getClasseTorn(position); //Per guardar el torna de la classe seleccionada a l'spinner
                 loadAlumnes();
-
             }
 
             @Override
@@ -76,6 +82,14 @@ public class Tab1_alumne_fragment extends Fragment {
 
             }
         });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contarAlumnesChecked();
+            }
+        });
+
         return view;
     }
 
@@ -84,6 +98,8 @@ public class Tab1_alumne_fragment extends Fragment {
         super.onStart();
         getData();
     }
+
+
     private void getData(){
         StringRequest stringRequest= new StringRequest("http://azamoradam.000webhostapp.com/connect/spinner_llistar_classes.php", new Response.Listener<String>() {
             @Override
@@ -145,7 +161,7 @@ public class Tab1_alumne_fragment extends Fragment {
         return torn;
     }
     private void loadAlumnes() {
-
+        progressDialog.show();
         /*
          * Creating a String Request
          * The request type is GET defined by first parameter
@@ -167,7 +183,7 @@ public class Tab1_alumne_fragment extends Fragment {
                         JSONObject alumne = array.getJSONObject( i );
 
                         //adding the alumne to alumne list
-                        alumneList.add( new Alumnes( alumne.getInt( "ID" ), alumne.getString( "NOM" ), alumne.getString( "COGNOM" ), alumne.getString( "imageURL" ) ) );
+                        alumneList.add( new Alumne( alumne.getInt( "ID" ), alumne.getString( "NOM" ), alumne.getString( "COGNOM" ), alumne.getString( "imageURL" ) ) );
                     }
 
                     //creating adapter object and setting it to recyclerview
@@ -175,6 +191,7 @@ public class Tab1_alumne_fragment extends Fragment {
                     AdaptadorListView adapter = new AdaptadorListView( alumneList, getContext());
                     recyclerView.addItemDecoration(new DividerItemDecoration( getContext(),LinearLayoutManager.VERTICAL));
                     recyclerView.setAdapter(adapter);
+                    progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -188,5 +205,11 @@ public class Tab1_alumne_fragment extends Fragment {
 
         //adding our stringrequest to queue
         Volley.newRequestQueue( this.getContext()).add( stringRequest );
+    }
+
+    private void contarAlumnesChecked(){
+        List<Alumne> llista= ((AdaptadorListView) recyclerView.getAdapter()).getAlumnesChecked();
+        Toast.makeText(getContext(), ""+ llista.size(),
+                Toast.LENGTH_LONG).show();
     }
 }
