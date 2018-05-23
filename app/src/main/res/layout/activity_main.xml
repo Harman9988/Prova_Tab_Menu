@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.alber.prova_tab_menu.MainActivity"
+    tools:context="com.example.alber.prova_tab_menu.ActivityLogin"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
@@ -24,9 +24,8 @@
     <TextView
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
         android:autoLink="all"
         android:text="Forget password?"
         android:textColor="#8BC34A"
@@ -38,8 +37,8 @@
         android:id="@+id/etUsername"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Username"
@@ -54,29 +53,30 @@
         android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#8BC34A"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="395dp"
-        android:layout_height="64dp"
+        android:layout_width="253dp"
+        android:layout_height="46dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/roundedbutton"
         android:text="Login"
-        android:background = "@drawable/roundedbutton"
-        android:textColor="#8BC34A"
+        android:textColor="#689F38"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegister"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvRegister" />
 
 </android.support.constraint.ConstraintLayout>

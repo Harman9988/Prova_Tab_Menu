@@ -1,11 +1,13 @@
 package com.example.alber.prova_tab_menu;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,13 +27,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.barteksc.pdfviewer.util.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Tab1_alumne_fragment extends Fragment {
     private static final String TAG="Tab1Fragment";
@@ -41,6 +47,7 @@ public class Tab1_alumne_fragment extends Fragment {
     private ArrayList<String> arrayList;
     static private String id_classe, torn_classe;
     Button boto_inserir;
+    CheckBox checkBox2;
     List<Alumne> alumneList;
     RecyclerView recyclerView;
     Button button;
@@ -60,6 +67,7 @@ public class Tab1_alumne_fragment extends Fragment {
         spinner=view.findViewById(R.id.spinner_classes);
         arrayList= new ArrayList<String>();
         button = view.findViewById( R.id.boto_inserir );
+        checkBox2 = view.findViewById( R.id.checkBox );
 
         progressDialog = new ProgressDialog(getContext(),R.style.AppCompatAlertDialogStyle);
         progressDialog.setMessage("Loading...");
@@ -86,7 +94,25 @@ public class Tab1_alumne_fragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contarAlumnesChecked();
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                inserir_alumnes_checked();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Estas segur/a?").setPositiveButton("SI", dialogClickListener)
+                        .setNegativeButton("NO", dialogClickListener).show();
+
+
             }
         });
 
@@ -207,9 +233,50 @@ public class Tab1_alumne_fragment extends Fragment {
         Volley.newRequestQueue( this.getContext()).add( stringRequest );
     }
 
-    private void contarAlumnesChecked(){
+    private void inserir_alumnes_checked(){
         List<Alumne> llista= ((AdaptadorListView) recyclerView.getAdapter()).getAlumnesChecked();
-        Toast.makeText(getContext(), ""+ llista.size(),
+        for (Alumne alumne : llista) {
+            inserir_alumne(alumne);
+        }
+        Toast.makeText(getContext(), "Dades guardades correctament",
                 Toast.LENGTH_LONG).show();
     }
+
+    private void inserir_alumne(Alumne alumne){
+        final String id_alumne=String.valueOf(alumne.getId());
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, "http://azamoradam.000webhostapp.com/connect/insert_alumne.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+
+                // Creating Map String Params.
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Adding All values to Params.
+                params.put("id_alumne", id_alumne);
+                params.put("id_torn", torn_classe);
+
+                return params;
+            }
+        };
+
+
+        // Creating RequestQueue.
+        RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
+
+        // Adding the StringRequest object into requestQueue.
+        requestQueue.add(stringRequest);
+    }
+
+
 }

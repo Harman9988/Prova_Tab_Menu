@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityLogin extends AppCompatActivity {
 
     EditText et_usuari, et_contrasenya;
     Button btn_login;
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressDialog = new ProgressDialog(MainActivity.this,R.style.AppCompatAlertDialogStyle);
+        progressDialog = new ProgressDialog(ActivityLogin.this,R.style.AppCompatAlertDialogStyle);
         et_usuari=findViewById(R.id.etUsername);
         et_contrasenya=findViewById(R.id.etPassword);
         btn_login=findViewById(R.id.btnLogin);
