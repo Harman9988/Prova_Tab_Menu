@@ -1,4 +1,4 @@
-package com.example.alber.prova_tab_menu;
+package com.example.alber.prova_tab_menu.Alumne;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.alber.prova_tab_menu.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class AdaptadorListView extends RecyclerView.Adapter<AdaptadorListView.Pr
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.listview, null);
+        View view = inflater.inflate( R.layout.listview, null);
         return new ProductViewHolder(view);
     }
 

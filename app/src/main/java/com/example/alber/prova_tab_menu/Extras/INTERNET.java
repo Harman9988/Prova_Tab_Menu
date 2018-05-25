@@ -1,4 +1,4 @@
-package com.example.alber.prova_tab_menu;
+package com.example.alber.prova_tab_menu.Extras;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

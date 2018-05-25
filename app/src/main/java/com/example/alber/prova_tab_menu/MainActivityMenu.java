@@ -11,6 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.alber.prova_tab_menu.Alumne.Tab1_alumne_fragment;
+import com.example.alber.prova_tab_menu.Cuina.Tab2_cuina_fragment;
+import com.example.alber.prova_tab_menu.Menu.ActivityMenu;
+
 public class MainActivityMenu extends AppCompatActivity {
 
     private static final String TAG="MainActivityMenu";
@@ -46,7 +50,7 @@ public class MainActivityMenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.menu){
-            Intent i = new Intent( getApplicationContext(),ActivityPDF.class );
+            Intent i = new Intent( getApplicationContext(),ActivityMenu.class );
             startActivity(i);
         }
         else if(id==R.id.logout){

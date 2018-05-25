@@ -1,9 +1,12 @@
-package com.example.alber.prova_tab_menu;
+package com.example.alber.prova_tab_menu.Menu;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
+import com.example.alber.prova_tab_menu.R;
 import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.BufferedInputStream;
@@ -14,16 +17,17 @@ import java.net.URL;
 
 import static com.github.barteksc.pdfviewer.util.Util.toByteArray;
 
-public class ActivityPDF extends AppCompatActivity {
+public class ActivityMenu extends AppCompatActivity {
     PDFView visor_pdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pdf);
-
+        setContentView( R.layout.activity_menu );
         visor_pdf=findViewById(R.id.pdfViewer);
         new RetrievePDFBytes().execute("http://azamoradam.000webhostapp.com/image/Menu_prova.pdf");
+
+
     }
     class RetrievePDFBytes extends AsyncTask<String, Void, byte[]>
     {

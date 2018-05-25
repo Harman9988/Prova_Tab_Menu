@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="#e7e7e7"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/observacio"
+            android:layout_width="229dp"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textColor="#689F38"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/countalumnes"
+            android:layout_width="51dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            android:textColor="#689F38"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+</LinearLayout>

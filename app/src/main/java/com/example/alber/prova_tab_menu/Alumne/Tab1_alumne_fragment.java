@@ -1,4 +1,4 @@
-package com.example.alber.prova_tab_menu;
+package com.example.alber.prova_tab_menu.Alumne;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +26,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.barteksc.pdfviewer.util.Constants;
+import com.example.alber.prova_tab_menu.Cuina.Tab2_cuina_fragment;
+import com.example.alber.prova_tab_menu.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,25 +40,22 @@ import java.util.Map;
 
 public class Tab1_alumne_fragment extends Fragment {
     private static final String TAG="Tab1Fragment";
-    public static final String JSON_ARRAY = "result";
     private JSONArray result;
-    Spinner spinner;
-    String  ClasseNom;
     private ArrayList<String> arrayList;
     static private String id_classe, torn_classe;
-    Button boto_inserir;
+    public static final String JSON_ARRAY = "result";
+    Spinner spinner;
     CheckBox checkBox2;
     List<Alumne> alumneList;
     RecyclerView recyclerView;
     Button button;
-    AdaptadorListView lAdapter;
     ProgressDialog progressDialog;
-
+    Tab2_cuina_fragment tab2_cuina_fragment = new Tab2_cuina_fragment();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.tab1_alumne_fragment, container, false);
+        View view= inflater.inflate( R.layout.tab1_alumne_fragment, container, false);
 
         recyclerView = view.findViewById(R.id.recylcerView);
         recyclerView.setHasFixedSize(true);
@@ -100,6 +97,7 @@ public class Tab1_alumne_fragment extends Fragment {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
                                 inserir_alumnes_checked();
+                                //tab2_cuina_fragment.omplenarVectorsAlumnesMenjador();
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:
