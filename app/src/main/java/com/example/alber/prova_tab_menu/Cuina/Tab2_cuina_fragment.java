@@ -29,7 +29,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = "Tab2Fragment";
     RecyclerView recyclerViewcuina;
     private JSONArray result;
@@ -73,7 +73,7 @@ public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.
                     alumnestotals = j.getInt( "result2" );
                     omplenarVector( result );
                     gestioAlumnesMenjador();
-                    omplenarVectorAmbAlumnesTotal(alumnestotals);
+                    omplenarVectorAmbAlumnesTotal( alumnestotals );
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -114,7 +114,7 @@ public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.
                 obs = listAGestionar.get( i ).getObservacio() + " i " + listAGestionar.get( i + 1 ).getObservacio();
                 pos = existeixObservacio( obs );
                 if (pos == -1) {
-                    listDefinitva.add( new Observacio_IdAlumne(obs, 0, 1 ) );
+                    listDefinitva.add( new Observacio_IdAlumne( obs, 0, 1 ) );
                 } else {
                     listDefinitva.get( pos ).augmentarAlumneContador();
                 }
@@ -125,7 +125,7 @@ public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.
                 obs = listAGestionar.get( i ).getObservacio();
                 pos = existeixObservacio( obs );
                 if (pos == -1) {
-                    listDefinitva.add( new Observacio_IdAlumne(obs, 0, 1 ) );
+                    listDefinitva.add( new Observacio_IdAlumne( obs, 0, 1 ) );
                 } else {
                     listDefinitva.get( pos ).augmentarAlumneContador();
                 }
@@ -145,7 +145,7 @@ public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.
         AdaptadorListViewCuina adapter = new AdaptadorListViewCuina( listDefinitva, getContext() );
         recyclerViewcuina.setAdapter( adapter );
 
-        mSwipeRefreshLayout.setRefreshing(false);
+        mSwipeRefreshLayout.setRefreshing( false );
 
     }
 
@@ -164,14 +164,20 @@ public class Tab2_cuina_fragment extends Fragment implements SwipeRefreshLayout.
     }
 
     private void omplenarVectorAmbAlumnesTotal(final int total) {
-        int size = listDefinitva.size();
+        int size = 0;
+        for (int i = 0; i < listDefinitva.size(); i++) {
+            if (listDefinitva.get( i ).getContador_alumnes() > 1) {
+                size = size + listDefinitva.get( i ).getContador_alumnes() - 1;
+            }
+        }
+        size = size + listDefinitva.size();
         listDefinitva.add( new Observacio_IdAlumne( "Menús Normals", 0, total - size ) );
-        recyclerViewcuina.getAdapter().notifyDataSetChanged();
+        //recyclerViewcuina.getAdapter().notifyDataSetChanged();
     }
 
 
     @Override
-   public void onRefresh() {
+    public void onRefresh() {
         omplenarVectorsAlumnesMenjador();
     }
 }

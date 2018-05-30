@@ -1,8 +1,10 @@
 package com.example.alber.prova_tab_menu;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,15 +15,18 @@ import android.view.MenuItem;
 
 import com.example.alber.prova_tab_menu.Alumne.Tab1_alumne_fragment;
 import com.example.alber.prova_tab_menu.Cuina.Tab2_cuina_fragment;
+import com.example.alber.prova_tab_menu.Main.ActivityLogin;
 import com.example.alber.prova_tab_menu.Menu.ActivityMenu;
 
 public class MainActivityMenu extends AppCompatActivity {
 
     private static final String TAG="MainActivityMenu";
     private SectionsPageAdapter mSectionsPageAdapter;
-
+MÑ´
+    <zxcv bnm,1º<
     private ViewPager mViewPager;
-    public static final String PREFS_NAME = "LoginPrefs";
+    //LoginPrefs
+    public static final String PREFS_NAME = "sessio_guardada";
 
 
     @Override
@@ -69,11 +74,19 @@ public class MainActivityMenu extends AppCompatActivity {
     }
 
     public void logout(){
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.remove("logged");
+        SharedPreferences preferences =getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
         editor.commit();
         finish();
+
+
+        /*SharedPreferences mPreferences = getSharedPreferences("CurrentUser", MODE_PRIVATE);
+        SharedPreferences.Editor editor=mPreferences.edit();
+        editor.remove("UserName");
+        editor.remove("PassWord");
+        editor.commit();
+        finish();*/
     }
 
 

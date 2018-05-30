@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.alber.prova_tab_menu.Extras.INTERNET;
 import com.example.alber.prova_tab_menu.Extras.shared_Preferences;
 import com.example.alber.prova_tab_menu.MainActivityMenu;
 import com.example.alber.prova_tab_menu.R;
@@ -20,7 +19,6 @@ public class ActivityLogin extends AppCompatActivity {
     Button btn_login;
     ProgressDialog progressDialog;
 
-    INTERNET internet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
